@@ -1,0 +1,30 @@
+@import "variables";
+@import "mixins";
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+
+  @include border-box;
+}
+
+.wrapper,
+.row {
+  @extend %clearfix;
+}
+
+.wrapper {
+  width: 95%;
+  max-width: $grid-max-width;
+}
+
+//Media queries
+@media #{$breakpoint-medium} {
+  @for $i from 1 through $grid-columns {
+    .column-#{$i} {
+      width:100% /$grid-columns * $i;
+    }
+  }
+}
